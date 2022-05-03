@@ -4,6 +4,7 @@ import com.mashibing.dao.BookDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.FileInputStream;
@@ -17,7 +18,7 @@ public class BookService {
 
 
     /**
-     * propagation:传播特性,表示不同的事物之间的关系
+     * propagation:传播特性,表示不同的事物之间的关系,当一个事物被另一个事物方法调用时,这个事物方法应该如何进行
      * isolation:隔离级别:4种隔离级别,会引发不同的数据错乱问题,mysql的四种隔离级别
      * timeout:超时时间
      * readonly:只读事物,如果配置了只读事物,那么在事物运行期间,不允许对数据进行修改,否则抛出异常
@@ -33,8 +34,8 @@ public class BookService {
      */
 //    @Transactional(timeout = 4)
 //    @Transactional(readOnly = true)
-    @Transactional(isolation = Isolation.DEFAULT)
-    public void buyBook() throws FileNotFoundException {
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void buyBook() {
         bookDao.getprice(1);
         bookDao.updateBalance("zhangsan",100);
 //        try {
@@ -49,9 +50,13 @@ public class BookService {
         }*/
 
         bookDao.updateStock(1);
-//        int i=1/0;
+        int i=1/0;
 
-        new FileInputStream("aaa.txt");
+//        new FileInputStream("aaa.txt");
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void updatePrice(){
+        bookDao.updatePrice(1);
+    }
 }

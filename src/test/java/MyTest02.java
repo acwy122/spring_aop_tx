@@ -1,4 +1,5 @@
 import com.mashibing.service.BookService;
+import com.mashibing.service.MultService;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -14,4 +15,14 @@ public class MyTest02 {
         BookService bean = context.getBean(BookService.class);
         bean.buyBook();
     }
+
+    @Test
+    public void test02() {
+
+        MultService bean = context.getBean(MultService.class);
+        bean.mult();
+    }
+
+
+
 }
