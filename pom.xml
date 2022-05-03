@@ -77,7 +77,6 @@
             <artifactId>spring-orm</artifactId>
             <version>1.2.6</version>
         </dependency>
-
     </dependencies>
 
 </project>
