@@ -90,4 +90,11 @@ public class Emp {
                 ", deptno=" + deptno +
                 '}';
     }
+    public Emp(){
+
+    };
+    public Emp(Integer empno, String ename) {
+        this.empno = empno;
+        this.ename = ename;
+    }
 }

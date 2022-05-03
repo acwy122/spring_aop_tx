@@ -1,4 +1,5 @@
 import com.alibaba.druid.pool.DruidDataSource;
+import com.mashibing.dao.EmpDao;
 import com.mashibing.entity.Emp;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -78,5 +79,12 @@ public class MyTest {
         for (Emp emp : result) {
             System.out.println(emp);
         }
+    }
+
+    @Test
+    public void test08(){
+        EmpDao empDao = context.getBean("empDao", EmpDao.class);
+        empDao.save(new Emp(1111,"zhangsan"));
+
     }
 }
