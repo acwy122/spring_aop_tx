@@ -34,7 +34,7 @@ public class BookService {
      */
 //    @Transactional(timeout = 4)
 //    @Transactional(readOnly = true)
-    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void buyBook() {
         bookDao.getprice(1);
         bookDao.updateBalance("zhangsan",100);
@@ -55,7 +55,7 @@ public class BookService {
 //        new FileInputStream("aaa.txt");
     }
 
-    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void updatePrice(){
         bookDao.updatePrice(1);
     }
